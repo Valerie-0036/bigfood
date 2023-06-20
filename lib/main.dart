@@ -23,46 +23,95 @@ class _MyAppState extends State<MyApp> {
   @override
   // dia akan call yang returnnya object Widget dengan parameter nya Build Context
   Widget build(BuildContext context){
-    return MaterialApp(
-      // judul di program di os
-      title: 'BigFood',
-      home: 
-      // scaffold = widget yg menyediakan navbar dan appbar
-      Scaffold(
-        appBar: AppBar(
-          title:Text('Demo'),
-          backgroundColor: Color.fromARGB(255, 168, 255, 249),
-        ),
-        // cuman div
-        body: 
-        // ctrl + ., extract widget. Buat Widget baru biar ga terlalu pjg
-        Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('BigFood', style:TextStyle(fontSize: 36, )),
-          Image(image: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Peppa_Pig_logo.svg/1200px-Peppa_Pig_logo.svg.png')),
-          Text('Instant? No!',style:TextStyle(fontSize: 24, )),
-          Text('Lottery: ',style:TextStyle(fontSize: 24, )),
-          Text(randomNumber.toString(),style:TextStyle(fontSize: 30, )),
-          // onPressed: kalo di klik isinya apa. child = isi button
-          SizedBox(height: 15,),
-          ElevatedButton(
-            onPressed: (){
-              generateRandom();
-            },
-            child: Text('Order Now!'))
-          // kalo widget ada state pake stateful. kalo static, stateless.
-      ],),
-    ),
-      ),
-
-    );
+    return const MaterialApp(home: NavigationExample());
     // return CupertinoApp(
     //   home: CupertinoPageScaffold(
     //     navigationBar: CupertinoNavigationBar(middle: Text('Demo')),
     //     child: Container(),
     // ),
     // );
+  }
+}
+class NavigationExample extends StatefulWidget {
+  const NavigationExample({super.key});
+
+  @override
+  State<NavigationExample> createState() => _NavigationExampleState();
+}
+
+class _NavigationExampleState extends State<NavigationExample> {
+  int currentPageIndex = 0;
+  NavigationDestinationLabelBehavior labelBehavior =
+      NavigationDestinationLabelBehavior.alwaysShow;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: NavigationBar(
+        labelBehavior: labelBehavior,
+        selectedIndex: currentPageIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        destinations: const <Widget>[
+          NavigationDestination(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.commute),
+            label: 'Commute',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.bookmark),
+            icon: Icon(Icons.bookmark_border),
+            label: 'Saved',
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Label behavior: ${labelBehavior.name}'),
+            const SizedBox(height: 10),
+            OverflowBar(
+              spacing: 10.0,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      labelBehavior =
+                          NavigationDestinationLabelBehavior.alwaysShow;
+                    });
+                  },
+                  child: const Text('alwaysShow'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      labelBehavior =
+                          NavigationDestinationLabelBehavior.onlyShowSelected;
+                    });
+                  },
+                  child: const Text('onlyShowSelected'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      labelBehavior =
+                          NavigationDestinationLabelBehavior.alwaysHide;
+                    });
+                  },
+                  child: const Text('alwaysHide'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
