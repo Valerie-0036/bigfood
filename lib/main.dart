@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int randomNumber = 0;
+  int currentPage = 0;
 
   void generateRandom() {
     setState(() {
@@ -21,14 +22,34 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void changePage(int index) {
+    setState(() {
+      currentPage = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: NavigationExample(title: 'FirstPage'));
+    return MaterialApp(
+      home: NavigationExample(
+        title: 'FirstPage',
+        currentPage: currentPage,
+        changePage: changePage,
+      ),
+    );
   }
 }
 
 class NavigationExample extends StatefulWidget {
-  const NavigationExample({Key? key, required String title}) : super(key: key);
+  const NavigationExample(
+      {Key? key,
+      required String title,
+      required this.currentPage,
+      required this.changePage})
+      : super(key: key);
+
+  final int currentPage;
+  final Function(int) changePage;
 
   @override
   State<NavigationExample> createState() => _NavigationExampleState();
@@ -37,6 +58,11 @@ class NavigationExample extends StatefulWidget {
 class _NavigationExampleState extends State<NavigationExample> {
   int _selectedIndex = 0;
 
+  void onImageClicked(int index) {
+    print('Image clicked: $index');
+    // Perform any action when the image is clicked
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,18 +70,26 @@ class _NavigationExampleState extends State<NavigationExample> {
       body: Center(
         child: Row(
           children: [
-            Expanded(
-              child: Image.asset(
-                'assets/images/gambar1.jpeg',
-                fit: BoxFit.cover,
+            if (widget.currentPage == 1) // Show the image only on the Cart page
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => onImageClicked(0),
+                  child: Image.asset(
+                    'assets/images/gambar1.jpeg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-            Expanded( 
-              child: Image.asset(
-                'assets/images/gambar2.jpeg',
-                fit: BoxFit.cover,
+            if (widget.currentPage == 1) // Show the image only on the Cart page
+              Expanded(
+                child: GestureDetector(
+                  onTap: () => onImageClicked(1),
+                  child: Image.asset(
+                    'assets/images/gambar2.jpeg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
           ],
         ),
       ),
@@ -65,10 +99,43 @@ class _NavigationExampleState extends State<NavigationExample> {
         onDestinationSelected: (index) {
           setState(() {
             _selectedIndex = index;
+            widget.changePage(index);
           });
         },
         destinations: _navBarItems,
       ),
+    );
+  }
+}
+
+class NavigationBar extends StatelessWidget {
+  final Duration animationDuration;
+  final int selectedIndex;
+  final ValueChanged<int> onDestinationSelected;
+  final List<NavigationDestination> destinations;
+
+  const NavigationBar({
+    Key? key,
+    required this.animationDuration,
+    required this.selectedIndex,
+    required this.onDestinationSelected,
+    required this.destinations,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      items: destinations
+          .map((destination) => BottomNavigationBarItem(
+                icon: destination.icon,
+                label: destination.label,
+                activeIcon: destination.selectedIcon,
+              ))
+          .toList(),
+      currentIndex: selectedIndex,
+      onTap: onDestinationSelected,
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.grey,
     );
   }
 }
