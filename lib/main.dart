@@ -33,90 +33,54 @@ class _MyAppState extends State<MyApp> {
   }
 }
 class NavigationExample extends StatefulWidget {
-  // const NavigationExample({super.key});
-  const NavigationExample({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const NavigationExample({Key? key, required String title}) : super(key: key);
+
   @override
   State<NavigationExample> createState() => _NavigationExampleState();
 }
 
 class _NavigationExampleState extends State<NavigationExample> {
-  int currentPageIndex = 0;
-  NavigationDestinationLabelBehavior labelBehavior =
-      NavigationDestinationLabelBehavior.alwaysHide;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('BigFood Delivery')),
+      body: Center(
+          child: Text("Selected Page: ${_navBarItems[_selectedIndex].label}")),
       bottomNavigationBar: NavigationBar(
-        // labelBehavior: labelBehavior,
-        selectedIndex: currentPageIndex,
-        onDestinationSelected: (int index) {
+        animationDuration: const Duration(seconds: 1),
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (index) {
           setState(() {
-            currentPageIndex = index;
+            _selectedIndex = index;
           });
         },
-        destinations: const <Widget>[
-          NavigationDestination(
-            icon: Icon(Icons.house_rounded),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Shop',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.message),
-            icon: Icon(Icons.message_outlined),
-            label: 'Message',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person),
-            label: 'Me',
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // children: <Widget>[
-          //   Text('Label behavior: ${labelBehavior.name}'),
-          //   const SizedBox(height: 10),
-          //   OverflowBar(
-          //     spacing: 10.0,
-          //     children: <Widget>[
-          //       ElevatedButton(
-          //         onPressed: () {
-          //           setState(() {
-          //             labelBehavior =
-          //                 NavigationDestinationLabelBehavior.alwaysShow;
-          //           });
-          //         },
-          //         child: const Text('alwaysShow'),
-          //       ),
-          //       ElevatedButton(
-          //         onPressed: () {
-          //           setState(() {
-          //             labelBehavior =
-          //                 NavigationDestinationLabelBehavior.onlyShowSelected;
-          //           });
-          //         },
-          //         child: const Text('onlyShowSelected'),
-          //       ),
-          //       ElevatedButton(
-          //         onPressed: () {
-          //           setState(() {
-          //             labelBehavior =
-          //                 NavigationDestinationLabelBehavior.alwaysHide;
-          //           });
-          //         },
-          //         child: const Text('alwaysHide'),
-          //       ),
-          //     ],
-          //   ),
-          // ],
-        ),
+        destinations: _navBarItems,
       ),
     );
   }
 }
+
+const _navBarItems = [
+  NavigationDestination(
+    icon: Icon(Icons.home_outlined),
+    selectedIcon: Icon(Icons.home_rounded),
+    label: 'Home',
+  ),
+  NavigationDestination(
+    icon: Icon(Icons.shopping_cart_outlined),
+    selectedIcon: Icon(Icons.shopping_cart),
+    label: 'Cart',
+  ),
+  NavigationDestination(
+    icon: Icon(Icons.message),
+    selectedIcon: Icon(Icons.message_outlined),
+    label: 'Message',
+  ),
+  NavigationDestination(
+    icon: Icon(Icons.person_outline_rounded),
+    selectedIcon: Icon(Icons.person_rounded),
+    label: 'Profile',
+  ),
+];
