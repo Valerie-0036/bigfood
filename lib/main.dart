@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+
 void main() {
   runApp(const MyApp());
 }
-// ctrl + . conver stateless ke stateful
+
 class MyApp extends StatefulWidget {
-const MyApp({ Key? key }) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -14,24 +15,18 @@ const MyApp({ Key? key }) : super(key: key);
 class _MyAppState extends State<MyApp> {
   int randomNumber = 0;
 
-  void generateRandom(){
+  void generateRandom() {
     setState(() {
       randomNumber = Random().nextInt(1000);
     });
   }
 
   @override
-  // dia akan call yang returnnya object Widget dengan parameter nya Build Context
-  Widget build(BuildContext context){
-    return const MaterialApp(home: NavigationExample(title: 'FirstPage'));
-    // return CupertinoApp(
-    //   home: CupertinoPageScaffold(
-    //     navigationBar: CupertinoNavigationBar(middle: Text('Demo')),
-    //     child: Container(),
-    // ),
-    // );
+  Widget build(BuildContext context) {
+    return MaterialApp(home: NavigationExample(title: 'FirstPage'));
   }
 }
+
 class NavigationExample extends StatefulWidget {
   const NavigationExample({Key? key, required String title}) : super(key: key);
 
@@ -47,7 +42,23 @@ class _NavigationExampleState extends State<NavigationExample> {
     return Scaffold(
       appBar: AppBar(title: const Text('BigFood Delivery')),
       body: Center(
-          child: Text("Selected Page: ${_navBarItems[_selectedIndex].label}")),
+        child: Row(
+          children: [
+            Expanded(
+              child: Image.asset(
+                'assets/images/gambar1.jpeg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Expanded( 
+              child: Image.asset(
+                'assets/images/gambar2.jpeg',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: NavigationBar(
         animationDuration: const Duration(seconds: 1),
         selectedIndex: _selectedIndex,
