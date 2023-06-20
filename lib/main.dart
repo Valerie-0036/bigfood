@@ -41,12 +41,12 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavigationExample extends StatefulWidget {
-  const NavigationExample(
-      {Key? key,
-      required String title,
-      required this.currentPage,
-      required this.changePage})
-      : super(key: key);
+  const NavigationExample({
+    Key? key,
+    required String title,
+    required this.currentPage,
+    required this.changePage,
+  }) : super(key: key);
 
   final int currentPage;
   final Function(int) changePage;
@@ -65,28 +65,48 @@ class _NavigationExampleState extends State<NavigationExample> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final imageWidth = screenWidth * 0.4; // Adjust the image width as needed
+    final imageHeight = imageWidth;
+
     return Scaffold(
       appBar: AppBar(title: const Text('BigFood Delivery')),
       body: Center(
         child: Row(
           children: [
-            if (widget.currentPage == 1) // Show the image only on the Cart page
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => onImageClicked(0),
-                  child: Image.asset(
-                    'assets/images/gambar1.jpeg',
-                    fit: BoxFit.cover,
+            if (widget.currentPage == 1) // Show the images only on the Cart page
+              Container(
+                margin: const EdgeInsets.all(8.0), // Add spacing between the images
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey), // Apply border
+                ),
+                child: SizedBox(
+                  width: imageWidth,
+                  height: imageHeight,
+                  child: GestureDetector(
+                    onTap: () => onImageClicked(0),
+                    child: Image.asset(
+                      'assets/images/gambar1.jpeg',
+                      fit: BoxFit.cover, // Resize without cropping
+                    ),
                   ),
                 ),
               ),
-            if (widget.currentPage == 1) // Show the image only on the Cart page
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => onImageClicked(1),
-                  child: Image.asset(
-                    'assets/images/gambar2.jpeg',
-                    fit: BoxFit.cover,
+            if (widget.currentPage == 1) // Show the images only on the Cart page
+              Container(
+                margin: const EdgeInsets.all(8.0), // Add spacing between the images
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey), // Apply border
+                ),
+                child: SizedBox(
+                  width: imageWidth,
+                  height: imageHeight,
+                  child: GestureDetector(
+                    onTap: () => onImageClicked(1),
+                    child: Image.asset(
+                      'assets/images/gambar2.jpeg',
+                      fit: BoxFit.cover, // Resize without cropping
+                    ),
                   ),
                 ),
               ),
@@ -107,7 +127,6 @@ class _NavigationExampleState extends State<NavigationExample> {
     );
   }
 }
-
 class NavigationBar extends StatelessWidget {
   final Duration animationDuration;
   final int selectedIndex;
