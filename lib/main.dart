@@ -25,13 +25,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context){
     return MaterialApp(
       // judul di program di os
-      title: 'App Sus',
+      title: 'BigFood',
       home: 
       // scaffold = widget yg menyediakan navbar dan appbar
       Scaffold(
         appBar: AppBar(
           title:Text('Demo'),
-          backgroundColor: Color.fromARGB(255, 28, 28, 152),
+          backgroundColor: Color.fromARGB(255, 168, 255, 249),
         ),
         // cuman div
         body: 
@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('App Sus', style:TextStyle(fontSize: 36, )),
+          Text('BigFood', style:TextStyle(fontSize: 36, )),
           Image(image: NetworkImage('https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Peppa_Pig_logo.svg/1200px-Peppa_Pig_logo.svg.png')),
           Text('Instant? No!',style:TextStyle(fontSize: 24, )),
           Text('Lottery: ',style:TextStyle(fontSize: 24, )),
