@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   // dia akan call yang returnnya object Widget dengan parameter nya Build Context
   Widget build(BuildContext context){
-    return const MaterialApp(home: NavigationExample());
+    return const MaterialApp(home: NavigationExample(title: 'FirstPage'));
     // return CupertinoApp(
     //   home: CupertinoPageScaffold(
     //     navigationBar: CupertinoNavigationBar(middle: Text('Demo')),
@@ -33,8 +33,9 @@ class _MyAppState extends State<MyApp> {
   }
 }
 class NavigationExample extends StatefulWidget {
-  const NavigationExample({super.key});
-
+  // const NavigationExample({super.key});
+  const NavigationExample({Key? key, required this.title}) : super(key: key);
+  final String title;
   @override
   State<NavigationExample> createState() => _NavigationExampleState();
 }
@@ -42,13 +43,13 @@ class NavigationExample extends StatefulWidget {
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior =
-      NavigationDestinationLabelBehavior.alwaysShow;
+      NavigationDestinationLabelBehavior.alwaysHide;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        labelBehavior: labelBehavior,
+        // labelBehavior: labelBehavior,
         selectedIndex: currentPageIndex,
         onDestinationSelected: (int index) {
           setState(() {
@@ -57,59 +58,63 @@ class _NavigationExampleState extends State<NavigationExample> {
         },
         destinations: const <Widget>[
           NavigationDestination(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
+            icon: Icon(Icons.house_rounded),
+            label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.commute),
-            label: 'Commute',
+            icon: Icon(Icons.shopping_cart),
+            label: 'Shop',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.bookmark),
-            icon: Icon(Icons.bookmark_border),
-            label: 'Saved',
+            selectedIcon: Icon(Icons.message),
+            icon: Icon(Icons.message_outlined),
+            label: 'Message',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person),
+            label: 'Me',
           ),
         ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Label behavior: ${labelBehavior.name}'),
-            const SizedBox(height: 10),
-            OverflowBar(
-              spacing: 10.0,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      labelBehavior =
-                          NavigationDestinationLabelBehavior.alwaysShow;
-                    });
-                  },
-                  child: const Text('alwaysShow'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      labelBehavior =
-                          NavigationDestinationLabelBehavior.onlyShowSelected;
-                    });
-                  },
-                  child: const Text('onlyShowSelected'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      labelBehavior =
-                          NavigationDestinationLabelBehavior.alwaysHide;
-                    });
-                  },
-                  child: const Text('alwaysHide'),
-                ),
-              ],
-            ),
-          ],
+          // children: <Widget>[
+          //   Text('Label behavior: ${labelBehavior.name}'),
+          //   const SizedBox(height: 10),
+          //   OverflowBar(
+          //     spacing: 10.0,
+          //     children: <Widget>[
+          //       ElevatedButton(
+          //         onPressed: () {
+          //           setState(() {
+          //             labelBehavior =
+          //                 NavigationDestinationLabelBehavior.alwaysShow;
+          //           });
+          //         },
+          //         child: const Text('alwaysShow'),
+          //       ),
+          //       ElevatedButton(
+          //         onPressed: () {
+          //           setState(() {
+          //             labelBehavior =
+          //                 NavigationDestinationLabelBehavior.onlyShowSelected;
+          //           });
+          //         },
+          //         child: const Text('onlyShowSelected'),
+          //       ),
+          //       ElevatedButton(
+          //         onPressed: () {
+          //           setState(() {
+          //             labelBehavior =
+          //                 NavigationDestinationLabelBehavior.alwaysHide;
+          //           });
+          //         },
+          //         child: const Text('alwaysHide'),
+          //       ),
+          //     ],
+          //   ),
+          // ],
         ),
       ),
     );
