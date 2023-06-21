@@ -69,9 +69,16 @@ flutter:
   - assets/images/gambar2.jpeg
   - assets/images/gambar3.jpeg
   - assets/images/gambar4.jpeg
+  - assets/images/profilepict.jpg
+
+  #logins
   - assets/images/onboarding-bg.png
   - assets/images/onboarding-bg-3NN.png
-  - assets/images/profilepict.jpg
+  - assets/images/google.png
+  - assets/images/facebook.png
+  - assets/images/logoO.png
+  - assets/images/logoW.png
+  - assets/images/orangeRectangle.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
