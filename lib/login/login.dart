@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NextPage1 extends StatelessWidget {
+class NextPagee1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

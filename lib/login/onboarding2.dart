@@ -1,4 +1,6 @@
 import 'package:bigfood/login/login.dart';
+import 'package:bigfood/login/signin.dart';
+import 'package:bigfood/login/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
@@ -96,7 +98,7 @@ class nextPage extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(42 * fem, 0 * fem, 42 * fem, 37 * fem),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => NextPage1()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => signin()));
                             },
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
