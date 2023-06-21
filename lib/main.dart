@@ -36,17 +36,18 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          body: SingleChildScrollView(
-          child: Scene(),
-          ),
-        // appBar: AppBar(
-        //   title: const Text('BigFood Delivery'),
-        // ),
-        // body: NavigationExample(
-        //   title: 'FirstPage',
-        //   currentPage: currentPage,
-        //   changePage: changePage,
-        // ),
+        // // uncomment untuk melihat Welcoming Page
+          // body: SingleChildScrollView(
+          // child: Scene(),
+          // ),
+        appBar: AppBar(
+          title: const Text('BigFood Delivery'),
+        ),
+        body: NavigationExample(
+          title: 'FirstPage',
+          currentPage: currentPage,
+          changePage: changePage,
+        ),
         bottomNavigationBar: NavigationBar(
           animationDuration: const Duration(seconds: 1),
           selectedIndex: currentPage,
