@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'home_images_widget.dart';
 import 'profile_widget.dart';
+<<<<<<< HEAD
 import 'notif.dart';
 
 
+=======
+import 'chat.dart';
+import 'package:bigfood/login/onboarding1.dart';
+// import 'package:bigfood/login/onboarding2.dart';
+>>>>>>> 725ea231204bf74126c717be8e4ed59509f9b6fc
 void main() {
   runApp(const MyApp());
 }
@@ -36,14 +42,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('BigFood Delivery'),
-        ),
-        body: NavigationExample(
-          title: 'FirstPage',
-          currentPage: currentPage,
-          changePage: changePage,
-        ),
+          body: SingleChildScrollView(
+          child: Scene(),
+          ),
+        // appBar: AppBar(
+        //   title: const Text('BigFood Delivery'),
+        // ),
+        // body: NavigationExample(
+        //   title: 'FirstPage',
+        //   currentPage: currentPage,
+        //   changePage: changePage,
+        // ),
         bottomNavigationBar: NavigationBar(
           animationDuration: const Duration(seconds: 1),
           selectedIndex: currentPage,
