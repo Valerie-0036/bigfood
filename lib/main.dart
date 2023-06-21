@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'home_images_widget.dart';
 import 'profile_widget.dart';
-import 'chat.dart';
+import 'notif.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -99,8 +100,8 @@ class _NavigationExampleState extends State<NavigationExample> {
               imageHeight: imageHeight,
               onImageClicked: onImageClicked,
             ),
-          if (widget.currentPage == 2) // Show the chat only on the Message page
-            ChatWidget(),
+            if (widget.currentPage == 2) // Show the user profile only on the Profile page
+            TaskList(),
           if (widget.currentPage == 3) // Show the user profile only on the Profile page
             UserProfile(),
         ],
