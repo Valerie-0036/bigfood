@@ -37,7 +37,7 @@ class UserProfile extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/images/gambar1.jpeg'),
+                    backgroundImage: AssetImage('assets/images/profilepict.jpg'),
                   ),
                 ),
               ),
