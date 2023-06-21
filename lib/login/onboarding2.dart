@@ -1,3 +1,4 @@
+import 'package:bigfood/login/filldata.dart';
 import 'package:bigfood/login/login.dart';
 import 'package:bigfood/login/signin.dart';
 import 'package:bigfood/login/signup.dart';
@@ -98,7 +99,7 @@ class nextPage extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(42 * fem, 0 * fem, 42 * fem, 37 * fem),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => signin()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyFormPage()));
                             },
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
