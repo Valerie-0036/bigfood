@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'home_images_widget.dart';
+import 'notif.dart';
 import 'profile_widget.dart';
-import 'chat.dart';
 import 'package:bigfood/login/onboarding1.dart';
-// import 'package:bigfood/login/onboarding2.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -36,19 +36,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        // // uncomment untuk melihat Welcoming Page
-          // body: SingleChildScrollView(
-          // child: Scene(),
-          // ),
-        appBar: AppBar(
-          title: const Text('BigFood Delivery'),
+        body: SingleChildScrollView(
+          child: currentPage == 0 ? Scene() : NavigationExample(
+            title: 'FirstPage',
+            currentPage: currentPage,
+            changePage: changePage,
+          ),
         ),
-        body: NavigationExample(
-          title: 'FirstPage',
-          currentPage: currentPage,
-          changePage: changePage,
-        ),
-        bottomNavigationBar: NavigationBar(
+        bottomNavigationBar: currentPage == 0 ? null : NavigationBar(
           animationDuration: const Duration(seconds: 1),
           selectedIndex: currentPage,
           onDestinationSelected: changePage,
@@ -104,8 +99,8 @@ class _NavigationExampleState extends State<NavigationExample> {
               imageHeight: imageHeight,
               onImageClicked: onImageClicked,
             ),
-          if (widget.currentPage == 2) // Show the chat only on the Message page
-            ChatWidget(),
+            if (widget.currentPage == 2) // Show the user profile only on the Profile page
+            TaskList(),
           if (widget.currentPage == 3) // Show the user profile only on the Profile page
             UserProfile(),
         ],

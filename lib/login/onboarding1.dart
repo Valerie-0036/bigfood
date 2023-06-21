@@ -67,7 +67,7 @@ class Scene extends StatelessWidget {
                                 maxWidth: 182*fem,
                               ),
                               child: Text(
-                                'Food is\nWhere Your\nComfort Food Resides',
+                                'Track your\nComfort Food here',
                                 textAlign: TextAlign.center,
                                 style: SafeGoogleFont (
                                   'Montserrat',
@@ -84,7 +84,7 @@ class Scene extends StatelessWidget {
                                 maxWidth: 244*fem,
                               ),
                               child: Text(
-                                'Enjoy a fast and smooth food delivery at your doorstep',
+                                'Here You Can find a chef or dish for \nevery taste and color. Enjoy!',
                                 textAlign: TextAlign.center,
                                 style: SafeGoogleFont (
                                   'Montserrat',
