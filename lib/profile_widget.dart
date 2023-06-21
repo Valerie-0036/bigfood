@@ -13,12 +13,13 @@ class UserProfile extends StatelessWidget {
         children: [
           SizedBox(height: 16),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(width: 32),
               Text(
                 'Profile',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
@@ -27,40 +28,60 @@ class UserProfile extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(width: 16),
-              CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/images/gambar1.jpeg'),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('assets/images/gambar1.jpeg'),
+                  ),
+                ),
               ),
               SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Jane',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 8, right: 20), // Tambahkan padding ke kanan
+                      child: Text(
+                        'Jane',
+                        style: TextStyle(
+                          fontSize: 19,
+                          color: Colors.grey, // Warna abu-abu
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    '+62817',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontStyle: FontStyle.italic,
+                    SizedBox(height: 2),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2, right: 20), // Tambahkan padding ke kanan
+                      child: Text(
+                        '+62817',
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.grey, // Warna abu-abu
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    'jane@gmail.com',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontStyle: FontStyle.italic,
+                    SizedBox(height: 2),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2, right: 20), // Tambahkan padding ke kanan
+                      child: Text(
+                        'jane@gmail.com',
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.grey, // Warna abu-abu
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
