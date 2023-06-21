@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'cart_images_widget.dart';
+import 'home_images_widget.dart';
 
 void main() {
   runApp(const MyApp());
