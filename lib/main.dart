@@ -32,10 +32,21 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: NavigationExample(
-        title: 'FirstPage',
-        currentPage: currentPage,
-        changePage: changePage,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('BigFood Delivery'),
+        ),
+        body: NavigationExample(
+          title: 'FirstPage',
+          currentPage: currentPage,
+          changePage: changePage,
+        ),
+        bottomNavigationBar: NavigationBar(
+          animationDuration: const Duration(seconds: 1),
+          selectedIndex: currentPage,
+          onDestinationSelected: changePage,
+          destinations: _navBarItems,
+        ),
       ),
     );
   }
@@ -44,11 +55,12 @@ class _MyAppState extends State<MyApp> {
 class NavigationExample extends StatefulWidget {
   const NavigationExample({
     Key? key,
-    required String title,
+    required this.title,
     required this.currentPage,
     required this.changePage,
   }) : super(key: key);
 
+  final String title;
   final int currentPage;
   final Function(int) changePage;
 
@@ -70,53 +82,22 @@ class _NavigationExampleState extends State<NavigationExample> {
     final imageWidth = screenWidth * 0.3; // Adjust the image width as needed
     final imageHeight = imageWidth;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('BigFood Delivery'),
-      ),
-      body: Center(
-        child: ListView(
-          children: [
-            if (widget.currentPage == 0) // Show the images only on the Cart page
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Find your favorite food',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  CartImagesWidget(
-                    imagePaths: [
-                      'assets/images/gambar1.jpeg',
-                      'assets/images/gambar2.jpeg',
-                      'assets/images/gambar3.jpeg',
-                      'assets/images/gambar4.jpeg',
-                    ],
-                    imageWidth: imageWidth,
-                    imageHeight: imageHeight,
-                    onImageClicked: onImageClicked,
-                  ),
-                ],
-              ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: NavigationBar(
-        animationDuration: const Duration(seconds: 1),
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-            widget.changePage(index);
-          });
-        },
-        destinations: _navBarItems,
+    return Center(
+      child: ListView(
+        children: [
+          if (widget.currentPage == 0) // Show the images only on the Cart page
+            CartImagesWidget(
+              imagePaths: [
+                'assets/images/gambar1.jpeg',
+                'assets/images/gambar2.jpeg',
+                'assets/images/gambar3.jpeg',
+                'assets/images/gambar4.jpeg',
+              ],
+              imageWidth: imageWidth,
+              imageHeight: imageHeight,
+              onImageClicked: onImageClicked,
+            ),
+        ],
       ),
     );
   }

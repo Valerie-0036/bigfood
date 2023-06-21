@@ -16,29 +16,44 @@ class CartImagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2, // Menentukan jumlah kolom dalam grid
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(), // Mencegah grid di dalam ListView agar tidak dapat digulir
-      children: imagePaths.map((path) {
-        return Container(
-          margin: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-          ),
-          child: SizedBox(
-            width: imageWidth,
-            height: imageHeight,
-            child: GestureDetector(
-              onTap: () => onImageClicked(imagePaths.indexOf(path)),
-              child: Image.asset(
-                path,
-                fit: BoxFit.cover,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            'Find your favorite food',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        );
-      }).toList(),
+        ),
+        GridView.count(
+          crossAxisCount: 2, // Menentukan jumlah kolom dalam grid
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(), // Mencegah grid di dalam ListView agar tidak dapat digulir
+          children: imagePaths.map((path) {
+            return Container(
+              margin: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+              ),
+              child: SizedBox(
+                width: imageWidth,
+                height: imageHeight,
+                child: GestureDetector(
+                  onTap: () => onImageClicked(imagePaths.indexOf(path)),
+                  child: Image.asset(
+                    path,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }
