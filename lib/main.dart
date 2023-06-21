@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'cart_images_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,47 +73,23 @@ class _NavigationExampleState extends State<NavigationExample> {
     return Scaffold(
       appBar: AppBar(title: const Text('BigFood Delivery')),
       body: Center(
-        child: Row(
-          children: [
-            if (widget.currentPage == 1) // Show the images only on the Cart page
-              Container(
-                margin: const EdgeInsets.all(8.0), // Add spacing between the images
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey), // Apply border
-                ),
-                child: SizedBox(
-                  width: imageWidth,
-                  height: imageHeight,
-                  child: GestureDetector(
-                    onTap: () => onImageClicked(0),
-                    child: Image.asset(
-                      'assets/images/gambar1.jpeg',
-                      fit: BoxFit.cover, // Resize without cropping
-                    ),
-                  ),
-                ),
-              ),
-            if (widget.currentPage == 1) // Show the images only on the Cart page
-              Container(
-                margin: const EdgeInsets.all(8.0), // Add spacing between the images
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey), // Apply border
-                ),
-                child: SizedBox(
-                  width: imageWidth,
-                  height: imageHeight,
-                  child: GestureDetector(
-                    onTap: () => onImageClicked(1),
-                    child: Image.asset(
-                      'assets/images/gambar2.jpeg',
-                      fit: BoxFit.cover, // Resize without cropping
-                    ),
-                  ),
-                ),
-              ),
+  child: ListView(
+    children: [
+      if (widget.currentPage == 1) // Show the images only on the Cart page
+        CartImagesWidget(
+          imagePaths: [
+            'assets/images/gambar1.jpeg',
+            'assets/images/gambar2.jpeg',
+            'assets/images/gambar3.jpeg',
+            'assets/images/gambar4.jpeg',
           ],
+          imageWidth: imageWidth,
+          imageHeight: imageHeight,
+          onImageClicked: onImageClicked,
         ),
-      ),
+    ],
+  ),
+),
       bottomNavigationBar: NavigationBar(
         animationDuration: const Duration(seconds: 1),
         selectedIndex: _selectedIndex,
@@ -127,6 +104,8 @@ class _NavigationExampleState extends State<NavigationExample> {
     );
   }
 }
+
+
 class NavigationBar extends StatelessWidget {
   final Duration animationDuration;
   final int selectedIndex;
