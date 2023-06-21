@@ -75,7 +75,7 @@ class _NavigationExampleState extends State<NavigationExample> {
       body: Center(
   child: ListView(
     children: [
-      if (widget.currentPage == 1) // Show the images only on the Cart page
+      if (widget.currentPage == 0) // Show the images only on the Cart page
         CartImagesWidget(
           imagePaths: [
             'assets/images/gambar1.jpeg',
@@ -104,8 +104,6 @@ class _NavigationExampleState extends State<NavigationExample> {
     );
   }
 }
-
-
 class NavigationBar extends StatelessWidget {
   final Duration animationDuration;
   final int selectedIndex;
