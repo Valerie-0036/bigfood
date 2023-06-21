@@ -71,25 +71,42 @@ class _NavigationExampleState extends State<NavigationExample> {
     final imageHeight = imageWidth;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('BigFood Delivery')),
+      appBar: AppBar(
+        title: const Text('BigFood Delivery'),
+      ),
       body: Center(
-  child: ListView(
-    children: [
-      if (widget.currentPage == 0) // Show the images only on the Cart page
-        CartImagesWidget(
-          imagePaths: [
-            'assets/images/gambar1.jpeg',
-            'assets/images/gambar2.jpeg',
-            'assets/images/gambar3.jpeg',
-            'assets/images/gambar4.jpeg',
+        child: ListView(
+          children: [
+            if (widget.currentPage == 0) // Show the images only on the Cart page
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Find your favorite food',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  CartImagesWidget(
+                    imagePaths: [
+                      'assets/images/gambar1.jpeg',
+                      'assets/images/gambar2.jpeg',
+                      'assets/images/gambar3.jpeg',
+                      'assets/images/gambar4.jpeg',
+                    ],
+                    imageWidth: imageWidth,
+                    imageHeight: imageHeight,
+                    onImageClicked: onImageClicked,
+                  ),
+                ],
+              ),
           ],
-          imageWidth: imageWidth,
-          imageHeight: imageHeight,
-          onImageClicked: onImageClicked,
         ),
-    ],
-  ),
-),
+      ),
       bottomNavigationBar: NavigationBar(
         animationDuration: const Duration(seconds: 1),
         selectedIndex: _selectedIndex,
@@ -104,6 +121,7 @@ class _NavigationExampleState extends State<NavigationExample> {
     );
   }
 }
+
 class NavigationBar extends StatelessWidget {
   final Duration animationDuration;
   final int selectedIndex;
