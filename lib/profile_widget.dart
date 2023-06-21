@@ -14,7 +14,7 @@ class UserProfile extends StatelessWidget {
           SizedBox(height: 16),
           Row(
             children: [
-              SizedBox(width: 16),
+              SizedBox(width: 32),
               Text(
                 'Profile',
                 style: TextStyle(
@@ -25,23 +25,44 @@ class UserProfile extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16),
-          Stack(
-            alignment: Alignment.center,
+          SizedBox(height: 8),
+          Row(
             children: [
+              SizedBox(width: 16),
               CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/images/gambar1.jpeg'),
               ),
+              SizedBox(width: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Jane',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    '+62817',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    'jane@gmail.com',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+              ),
             ],
-          ),
-          SizedBox(height: 16),
-          Text(
-            'Big Food Delivery',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
           ),
         ],
       ),
