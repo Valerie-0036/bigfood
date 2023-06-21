@@ -11,24 +11,17 @@ class UserProfile extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: 16), // Tambahkan jarak 16 pada bagian ini
           CircleAvatar(
             radius: 50,
             backgroundImage: AssetImage('assets/images/gambar1.jpeg'),
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 16), // Tambahkan jarak 16 pada bagian ini
           Text(
-            'John Doe',
+            'Big Food Delivery',
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'john.doe@example.com',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
             ),
           ),
         ],
