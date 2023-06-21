@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'home_images_widget.dart';
 import 'profile_widget.dart';
+import 'chat.dart';
 import 'package:bigfood/login/onboarding1.dart';
 // import 'package:bigfood/login/onboarding2.dart';
 void main() {
@@ -102,6 +103,8 @@ class _NavigationExampleState extends State<NavigationExample> {
               imageHeight: imageHeight,
               onImageClicked: onImageClicked,
             ),
+          if (widget.currentPage == 2) // Show the chat only on the Message page
+            ChatWidget(),
           if (widget.currentPage == 3) // Show the user profile only on the Profile page
             UserProfile(),
         ],
