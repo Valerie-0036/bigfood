@@ -67,7 +67,7 @@ class _NavigationExampleState extends State<NavigationExample> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final imageWidth = screenWidth * 0.4; // Adjust the image width as needed
+    final imageWidth = screenWidth * 0.3; // Adjust the image width as needed
     final imageHeight = imageWidth;
 
     return Scaffold(

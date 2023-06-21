@@ -16,85 +16,29 @@ class CartImagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-              ),
-              child: SizedBox(
-                width: imageWidth,
-                height: imageHeight,
-                child: GestureDetector(
-                  onTap: () => onImageClicked(0),
-                  child: Image.asset(
-                    imagePaths[0],
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-              ),
-              child: SizedBox(
-                width: imageWidth,
-                height: imageHeight,
-                child: GestureDetector(
-                  onTap: () => onImageClicked(1),
-                  child: Image.asset(
-                    imagePaths[1],
-                    fit: BoxFit.cover,
-                  ),
-                ),
+    return GridView.count(
+      crossAxisCount: 2, // Menentukan jumlah kolom dalam grid
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(), // Mencegah grid di dalam ListView agar tidak dapat digulir
+      children: imagePaths.map((path) {
+        return Container(
+          margin: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+          ),
+          child: SizedBox(
+            width: imageWidth,
+            height: imageHeight,
+            child: GestureDetector(
+              onTap: () => onImageClicked(imagePaths.indexOf(path)),
+              child: Image.asset(
+                path,
+                fit: BoxFit.cover,
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-              ),
-              child: SizedBox(
-                width: imageWidth,
-                height: imageHeight,
-                child: GestureDetector(
-                  onTap: () => onImageClicked(2),
-                  child: Image.asset(
-                    imagePaths[2],
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-              ),
-              child: SizedBox(
-                width: imageWidth,
-                height: imageHeight,
-                child: GestureDetector(
-                  onTap: () => onImageClicked(3),
-                  child: Image.asset(
-                    imagePaths[3],
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
+          ),
+        );
+      }).toList(),
     );
   }
 }
