@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'home_images_widget.dart';
+import 'profile_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -97,6 +98,8 @@ class _NavigationExampleState extends State<NavigationExample> {
               imageHeight: imageHeight,
               onImageClicked: onImageClicked,
             ),
+          if (widget.currentPage == 3) // Show the user profile only on the Profile page
+            UserProfile(),
         ],
       ),
     );

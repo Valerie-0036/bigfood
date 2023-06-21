@@ -22,9 +22,9 @@ class CartImagesWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
-            'Find your favorite food',
+            'Find Your Favorite Food',
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
