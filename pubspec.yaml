@@ -79,6 +79,11 @@ flutter:
   - assets/images/logoO.png
   - assets/images/logoW.png
   - assets/images/orangeRectangle.png
+  # photo profiles
+  - assets/images/personWhite.png
+  - assets/images/personYellow.png
+  - assets/images/personPink.png
+  - assets/images/personBlue.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

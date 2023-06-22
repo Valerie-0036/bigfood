@@ -103,7 +103,7 @@ class Scene extends StatelessWidget {
                         margin: EdgeInsets.fromLTRB(42*fem, 0*fem, 42*fem, 37*fem),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => nextPage()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => onboarding2()));
                           },
                           style: TextButton.styleFrom (
                             padding: EdgeInsets.zero,

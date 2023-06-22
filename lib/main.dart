@@ -4,6 +4,7 @@ import 'home_images_widget.dart';
 import 'notif.dart';
 import 'profile_widget.dart';
 import 'package:bigfood/login/onboarding1.dart';
+// import 'package:bigfood/chat/message.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,13 +37,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SingleChildScrollView(
-          child: currentPage == 0 ? Scene() : NavigationExample(
-            title: 'FirstPage',
-            currentPage: currentPage,
-            changePage: changePage,
+          body: SingleChildScrollView(
+          child: Scene(),
           ),
-        ),
+        // body: SingleChildScrollView(
+        //   child: currentPage == 0 ? Scene() : NavigationExample(
+        //     title: 'FirstPage',
+        //     currentPage: currentPage,
+        //     changePage: changePage,
+        //   ),
+        // ),
         bottomNavigationBar: currentPage == 0 ? null : NavigationBar(
           animationDuration: const Duration(seconds: 1),
           selectedIndex: currentPage,

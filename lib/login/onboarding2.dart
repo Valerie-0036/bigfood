@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:bigfood/utils.dart';
 import 'package:bigfood/login/onboarding2.dart';
 
-class nextPage extends StatelessWidget {
+class onboarding2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
