@@ -1,3 +1,7 @@
+import 'package:bigfood/login/filldata.dart';
+import 'package:bigfood/login/payment.dart';
+import 'package:bigfood/login/signin.dart';
+import 'package:bigfood/login/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
@@ -95,7 +99,7 @@ class onboarding2 extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(42 * fem, 0 * fem, 42 * fem, 37 * fem),
                           child: TextButton(
                             onPressed: () {
-                              // Navigator.of(context).push(MaterialPageRoute(builder: (context) => nextPage()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PaymentMethodPage()));
                             },
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
